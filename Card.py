@@ -7,6 +7,9 @@ class Card:
             self.value = 10
         if symbol == "A":
             self.value = 11
+            
+    def __str__(self):
+        return str(self.symbol) + " of " + self.suit
     
     def get_symbol(self):
         return self.symbol
@@ -14,6 +17,7 @@ class Card:
         return self.suit
     def get_value(self):
         return self.value
+    
     def set_suit(self, suit):
         self.suit = suit
     def set_symbol(self, symbol):
