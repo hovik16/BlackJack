@@ -14,5 +14,8 @@ class Deck:
         for card in self.deck:
             print(card)
     
+    def pop(self):
+        return self.deck.pop()
+    
     def shuffle(self):
         random.shuffle(self.deck)

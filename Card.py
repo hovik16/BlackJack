@@ -11,6 +11,9 @@ class Card:
     def __str__(self):
         return str(self.symbol) + " of " + self.suit
     
+    def __repr__(self):
+        return str(self.symbol) + " of " + self.suit
+    
     def get_symbol(self):
         return self.symbol
     def get_suit(self):
