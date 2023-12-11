@@ -25,6 +25,7 @@ class Game:
         self.deck = Deck()
         self.dealer_hand = []
         self.player_hand = []
+        print()
     
     def __create_hands(self):
         # creates dealer's hand
@@ -57,9 +58,27 @@ class Game:
     def __print_money(self):
         print(f"You now have ${self.money}")
     
+    def __print_player_hand(self):
+        string = str(self.player_hand[0])
+        for i in range(1, len(self.player_hand)):
+            card = self.player_hand[i]
+            string = string + ", " + str(card)
+        print(f"Your hand is: {string}")
+    
+    def __print_dealer_hand(self):
+        string = str(self.dealer_hand[1])
+        for i in range(2, len(self.player_hand)):
+            card = self.player_hand[i]
+            string = string + ", " + str(card)
+        print(f"Dealer is showing: {string}")
+    
     def run_game(self, bet):
+        print()
         self.deck.shuffle()
         self.__create_hands()
+        
+        self.__print_dealer_hand()
+        self.__print_player_hand()
         
         # these check if the starting hands have blackjack, and end the game if they do
         BJ = self.__check_BJ()
@@ -109,13 +128,13 @@ def main():
         bet = None
         while(bet == None):
             bet = input(f"Minimum Bet is ${MIN_BET}. How much money are you betting? ")
+            bet = int(bet)
             if(not isinstance(bet, int)):
                 print("Please input a valid value")
                 bet = None
             elif bet < MIN_BET:
                 print(f"Please input a bet that is at least ${MIN_BET}")
                 bet = None
-        
         if(play):
             game.run_game(bet)
     
